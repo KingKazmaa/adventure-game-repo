@@ -1,3 +1,4 @@
+
 import os
 from dataclasses import dataclass
 
@@ -47,7 +48,9 @@ class Mage(Character):
     weapon = f'Magic Staff'
     weapon_damage = 15
     
+    # REDUCES ENEMY HP
     def fireball():
+        
         pass
     fire = fireball
     
@@ -58,8 +61,9 @@ class Mage(Character):
     heal = add_hp
     
     
-    # GIVES A CHANCE TO SAVE THE PLAYER FROM DYING
+    # GIVES A 10% CHANCE TO SAVE THE PLAYER FROM DYING
     def arise():
+        
         pass
 
 # class Enemy():
