@@ -10,6 +10,7 @@ class Start:
         name = input('I need a real name: ')
     os.system('cls' if os.name == 'nt' else 'clear')
     # FIND AN EASIER WAY TO GIVE PROMPTS THAN JUST SPAMMING PRINT
+    # MAYBE INSERT TXT FILES ?
     print(f'Now let us partake on this perilous journey {name}!')
 
 class Character:
@@ -50,7 +51,10 @@ class Mage(Character):
     
     # REDUCES ENEMY HP
     def fireball():
-        
+        # something like:
+        # enemy.health -= 30
+        print(f'{name} casts Fireball!!')
+        print(f'It does 30 damage!')
         pass
     fire = fireball
     
