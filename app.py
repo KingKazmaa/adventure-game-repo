@@ -1,6 +1,7 @@
 
 import os
 from dataclasses import dataclass
+import random
 
 
 class Start:
@@ -30,39 +31,40 @@ class Character:
         
     # REDUCES ENEMY HEALTH
     def attack():
+        # enemy.health -= 5
+        print(f'{name} attacks using bare hands! it isn't very effective')
         
-        pass
-
-    #   
-    def heal():
-        pass
-
     def gain_xp():
-        pass
+        xp += 50
+        print(f'xp +50')
+        print(f'current xp: {xp})
     
     def faint():
-        pass
+        if health <= 0:
+            print(f'{name} has fainted...)
+            
 
 class Mage(Character):
     health = 125
+    mana = 150
     dodge_chance: .10
     weapon = f'Magic Staff'
     weapon_damage = 15
     
     # REDUCES ENEMY HP
     def fireball():
-        # something like:
+        if mana <= 44:
+            print(f'You don't have enough mana to cast this!')
+            # return to fight menu
         # enemy.health -= 30
+        mana -= 45
         print(f'{name} casts Fireball!!')
         print(f'It does 30 damage!')
-        pass
-    fire = fireball
     
     # ADDS HP 
-    def add_hp():
+    def heal():
         health = 125 if health >= 125 else health += 25
         print(f'You healed 25hp! Current hp is {health}')
-    heal = add_hp
     
     
     # GIVES A 10% CHANCE TO SAVE THE PLAYER FROM DYING
