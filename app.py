@@ -36,7 +36,7 @@ class Character:
         
     def gain_xp():
         xp += 50
-        print(f'xp +50')
+        print(f'You have gained +50xp')
         print(f'current xp: {xp})
     
     def faint():
@@ -51,7 +51,6 @@ class Mage(Character):
     weapon = f'Magic Staff'
     weapon_damage = 15
     
-    # REDUCES ENEMY HP
     def fireball():
         if mana <= 44:
             print(f'You don't have enough mana to cast this!')
@@ -60,8 +59,7 @@ class Mage(Character):
         mana -= 45
         print(f'{name} casts Fireball!!')
         print(f'It does 30 damage!')
-    
-    # ADDS HP 
+
     def heal():
         health = 125 if health >= 125 else health += 25
         print(f'You healed 25hp! Current hp is {health}')
@@ -69,11 +67,35 @@ class Mage(Character):
     
     # GIVES A 10% CHANCE TO SAVE THE PLAYER FROM DYING
     def arise():
+        revive_chance = random.randint(100)
+        if revive_chance <= 10:
+            health = 125 * 0.5
+            mana = 150 * 0.5
+          # RETURN TO BATTLE SEQUENCE
         
+class Barbarian(Character):
+    pass
+
+class Archer(Character):
+    pass
+
+class Enemy():
+    species: 'monster'
+    health: 100
+    weapon: 'axe'
+    weapon_damage: 25 # or int
+    
+    attack():
         pass
-
-# class Enemy():
-
+    
+    potion():
+        Enemy.health = 100 if Enemy.health >= 100
+        Enemy.health += 20
+        
+    faint():
+        True if Enemy.health <= 0:
+            Print(f'enemy has fainted')
+            character.gain_xp()
 
 # class Fight():?
 
