@@ -15,10 +15,10 @@ class Start:
     print(f'Now let us partake on this perilous journey {name}!')
 
 class Character:
-    # Class for each playable character type
     species = 'Human'
-    health: int
+    health: 100
     weapon: str
+    mana: int
     weapon_damage: int
     base_damage: 5
     dodge_chance: .05
@@ -32,16 +32,16 @@ class Character:
     # REDUCES ENEMY HEALTH
     def attack():
         # enemy.health -= 5
-        print(f'{name} attacks using bare hands! it isn't very effective')
+        print(f'{name} attacks using bare hands! it isn\'t very effective')
         
     def gain_xp():
         xp += 50
         print(f'You have gained +50xp')
-        print(f'current xp: {xp})
+        print(f'current xp: {xp}')
     
     def faint():
         if health <= 0:
-            print(f'{name} has fainted...)
+            print(f'{name} has fainted...')
             
 
 class Mage(Character):
@@ -71,7 +71,7 @@ class Mage(Character):
         if revive_chance <= 10:
             health = 125 * 0.5
             mana = 150 * 0.5
-          # RETURN TO BATTLE SEQUENCE
+            # RETURN TO BATTLE SEQUENCE
         
 class Barbarian(Character):
     pass
