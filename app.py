@@ -36,10 +36,10 @@ class Character:
 character = Character()
 
 class Enemy:
-    health: 100
-    weapon = 'dagger'
-    weapon_damage: 20
-    xp_gain: int
+    health = 100
+    weapon = f'dagger'
+    weapon_damage = 20
+    xp_gain = int
     
     def attack():
         print(f'The enemy attacks! It does 20 damage')
@@ -53,8 +53,8 @@ class Enemy:
     def faint():
         if Enemy.health <= 0:
             print(f'enemy has fainted...')
-
 enemy = Enemy()
+
 
 class Mage(Character):
     health = 125
@@ -67,10 +67,11 @@ class Mage(Character):
         if Mage.mana <= 44:
             print(f'You don\'t have enough mana to cast this!')
             # return to fight menu
-        enemy.health -= 30
-        mana -= 45
-        print(f'{Mage.name} casts Fireball!!')
-        print(f'It does 30 damage!')
+        else:
+            enemy.health -= 30
+            mana -= 45
+            print(f'{Mage.name} casts Fireball!!')
+            print(f'It does 30 damage!')
 
     def heal():
         Mage.health = 125 if Mage.health >= 125 else Mage.health + 25
@@ -85,6 +86,8 @@ class Mage(Character):
             Mage.mana = 150 * 0.5
             # RETURN TO BATTLE SEQUENCE
 mage = Mage()
+
+
 class Barbarian(Character):
     health = 180
     mana = 75
@@ -98,9 +101,22 @@ class Barbarian(Character):
         else:
             enemy.health -= Barbarian.weapon_damage
 
-class Archer(Character):
-    pass
+    # if health is lower than threshold, deal bonus damage
+    def rage():
+        if Barbarian.health <= 100:
+            enemy.health -= (Barbarian.weapon_damage + 15)
+        else:
+            enemy.health -= Barbarian.weapon_damage
+            
+barbarian = Barbarian()
 
+
+class Archer(Character):
+    health = 105
+    mana = 100
+    weapon = f'Hunting Bow'
+    weapon_damage = 20
+    dodge_chance = 
 
 
 class Start:
@@ -132,9 +148,13 @@ class Start:
     os.system('cls' if os.name == 'nt' else 'clear')
 
     print(f'Now let us partake on this perilous journey {name}!')
+    
+    # CREATE THIS FILE AND SEE HOW IT LOADS ONCE READ USING THE READ METHOD BELOW
 with open('intro.txt', 'r') as file:
         content = file.read()
         print(content)
+        
+        
 # class Fight:
 
 
