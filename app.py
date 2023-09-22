@@ -11,7 +11,7 @@ class Character:
     mana: int
     weapon_damage: int
     base_damage: 5
-    dodge_chance: .05
+    dodge_chance: int
     xp: 0
     
     def walk():
@@ -33,8 +33,6 @@ class Character:
         if Character.health <= 0:
             print(f'{Character.name} has fainted...')
 
-character = Character()
-
 class Enemy:
     health = 100
     weapon = f'dagger'
@@ -53,8 +51,6 @@ class Enemy:
     def faint():
         if Enemy.health <= 0:
             print(f'enemy has fainted...')
-enemy = Enemy()
-
 
 class Mage(Character):
     health = 125
@@ -85,8 +81,6 @@ class Mage(Character):
             Mage.health = 125 * 0.5
             Mage.mana = 150 * 0.5
             # RETURN TO BATTLE SEQUENCE
-mage = Mage()
-
 
 class Barbarian(Character):
     health = 180
@@ -108,16 +102,20 @@ class Barbarian(Character):
         else:
             enemy.health -= Barbarian.weapon_damage
             
-barbarian = Barbarian()
-
 
 class Archer(Character):
     health = 105
     mana = 100
     weapon = f'Hunting Bow'
     weapon_damage = 20
-    dodge_chance = 
+    dodge_chance = .15
 
+
+
+character = Character()
+mage = Mage()
+barbarian = Barbarian()
+enemy = Enemy()
 
 class Start:
 
@@ -145,6 +143,7 @@ class Start:
                 char_type = Mage()
                 print(f' You are {Start.name} the {char_type}')
         return char_type
+
     os.system('cls' if os.name == 'nt' else 'clear')
 
     print(f'Now let us partake on this perilous journey {name}!')
@@ -154,7 +153,7 @@ with open('intro.txt', 'r') as file:
         content = file.read()
         print(content)
         
-        
+
 # class Fight:
 
 
