@@ -107,14 +107,20 @@ class Archer(Character):
     health = 105
     mana = 100
     weapon = f'Hunting Bow'
+    daggers = 30
     weapon_damage = 20
     dodge_chance = .15
+    
+    def crit_attack():
+        enemy.health -= weapon_damage * 1.6
 
-
+    def throw_dagger():
+        enemy.health -= daggers
 
 character = Character()
 mage = Mage()
 barbarian = Barbarian()
+archer = Archer()
 enemy = Enemy()
 
 class Start:
