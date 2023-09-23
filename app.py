@@ -3,7 +3,7 @@ import os
 from dataclasses import dataclass
 import random
 
-
+    # create character object that  holds  attributes and types
 class Character:
     name: str
     health: int
@@ -123,6 +123,9 @@ barbarian = Barbarian()
 archer = Archer()
 enemy = Enemy()
 
+
+
+
 class Start:
 
     def get_name():
@@ -160,7 +163,13 @@ with open('intro.txt', 'r') as file:
         print(content)
         
 
-# class Fight:
-
+class Fight:
+    def enemy_turn():
+        enemy_skills = [enemy.attack(), enemy.potion(), # other skills]
+        
+        atk_chance = random.randint(10)
+        if atk_chance <= 6:
+            enemy.attack()
+            print(random.choice(enemy_skills))
 
 # class Main:
