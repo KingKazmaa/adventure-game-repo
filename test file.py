@@ -2,6 +2,7 @@ import os
 from dataclasses import dataclass
 import random
 
+
 class Character:
     name: str
     health: int
@@ -99,7 +100,14 @@ def intro_text():
     with open('intro.txt', 'r') as file:
         content = file.read()
         print(content)
+    name = input(' ')
+    if name.isdigit():
+        print('Haha nice try!')
+        name = input('I need a real name: ')
+    if name == True:
+        os.system('cls' if os.name == 'nt' else 'clear')
 def get_char_type(): 
+    print(f'Welcome {name}! Now before we partake on this perilous journey, I must know what sort of warrior you are!')
     print(f'Please choose a character type:\nBarbarian -- Archer -- Mage')
     char_type = input()
     match char_type:
@@ -109,22 +117,8 @@ def get_char_type():
             char_type = Archer()
         case "mage":
             char_type = Mage()
-
-character = Character()
-mage = Mage()
-barbarian = Barbarian()
-archer = Archer()
-enemy = Enemy()
-
-class Main:
+def main():
     print(intro_text())
-    name = input(' ')
-    if name.isdigit():
-        print('Haha nice try!')
-        name = input('I need a real name: ')
-    if name == True:
-        print(get_char_type())
-        os.system('cls' if os.name == 'nt' else 'clear')
-    print(f'Welcome {name} the {char_type}! Now before we partake on this perilous journey, I must know what sort of warrior you are!')
     print(get_char_type())
     print(f'So you are {name} the {char_type} then?')
+print(main())
