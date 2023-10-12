@@ -2,6 +2,7 @@ import os
 from dataclasses import dataclass
 import random
 
+    # create character object that  holds  attributes and types
 class Character:
     name: str
     health: int
@@ -85,9 +86,11 @@ class Archer(Character):
     health = 105
     mana = 100
     weapon = f'Hunting Bow'
+    daggers = 30
     weapon_damage = 20
     dodge_chance = .15
-    
+    def crit_attack():
+        enemy.health -= weapon_damage * 1.6
     def throw_dagger():
         pass
     def triple_shot():
@@ -116,6 +119,9 @@ barbarian = Barbarian()
 archer = Archer()
 enemy = Enemy()
 
+
+
+
 class Main:
     print(intro_text())
     name = input(' ')
@@ -128,3 +134,12 @@ class Main:
     print(f'Welcome {name} the {char_type}! Now before we partake on this perilous journey, I must know what sort of warrior you are!')
     print(get_char_type())
     print(f'So you are {name} the {char_type} then?')
+    
+class Fight:
+    def enemy_turn():
+        enemy_skills = [enemy.attack(), enemy.potion()] # other skills]
+        
+        atk_chance = random.randint(10)
+        if atk_chance <= 6:
+            enemy.attack()
+            print(random.choice(enemy_skills))
