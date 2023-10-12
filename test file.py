@@ -120,10 +120,14 @@ def get_char_type():
             char_type = Archer()
         case "mage":
             char_type = Mage()
-
+character = Character()
+mage = Mage()
+barbarian = Barbarian()
+archer = Archer()
+enemy = Enemy()
 class Fight:
     def enemy_turn():
-        enemy_skills = [enemy.attack(), enemy.potion(), # other skills]
+        enemy_skills = [enemy.attack(), enemy.potion()]
         
         atk_chance = random.randint(10)
         if atk_chance <= 6:
