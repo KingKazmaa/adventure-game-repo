@@ -86,9 +86,12 @@ class Archer(Character):
     health = 105
     mana = 100
     weapon = f'Hunting Bow'
+    daggers = 30
     weapon_damage = 20
     dodge_chance = .15
     
+    def crit_attack():
+        enemy.health -= weapon_damage * 1.6
     def throw_dagger():
         pass
     def triple_shot():
@@ -117,8 +120,12 @@ def get_char_type():
             char_type = Archer()
         case "mage":
             char_type = Mage()
-def main():
-    print(intro_text())
-    print(get_char_type())
-    print(f'So you are {name} the {char_type} then?')
-print(main())
+
+class Fight:
+    def enemy_turn():
+        enemy_skills = [enemy.attack(), enemy.potion(), # other skills]
+        
+        atk_chance = random.randint(10)
+        if atk_chance <= 6:
+            enemy.attack()
+            print(random.choice(enemy_skills))
