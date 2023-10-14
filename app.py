@@ -22,6 +22,8 @@ class Character:
         xp += 50
         print(f'You have gained +50xp! \nCurrent xp: {xp}')
     def faint():
+        # test this too
+        player.has_died = True
         if Character.health <= 0:
             print(f'{Character.name} has fainted...')
 class Enemy:
@@ -141,7 +143,7 @@ class Fight:
     
     def enemy_turn():
         enemy_skills = [enemy.attack(), enemy.potion()] # other skills too
-    atk_chance = random.randint(10)
+        atk_chance = random.randint(10)
         if atk_chance <= 6:
             enemy.attack()
             print(random.choice(enemy_skills))
