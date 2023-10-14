@@ -20,8 +20,7 @@ class Character:
         print(f'{Character.name} attacks using bare hands! it isn\'t very effective')
     def gain_xp():
         xp += 50
-        print(f'You have gained +50xp')
-        print(f'current xp: {xp}')
+        print(f'You have gained +50xp! \nCurrent xp: {xp}')
     def faint():
         if Character.health <= 0:
             print(f'{Character.name} has fainted...')
@@ -40,8 +39,9 @@ class Enemy:
             Enemy.health = 100 
         Enemy.health += 20
     def faint():
-        if Enemy.health <= 0:
-            print(f'enemy has fainted...')
+        print(f'enemy has fainted...')
+        # test this
+        Character.gain_xp()
 class Mage(Character):
     health = 125
     mana = 150
@@ -128,18 +128,20 @@ class Main:
     if name.isdigit():
         print('Haha nice try!')
         name = input('I need a real name: ')
+    # check the if statement and decide on that or whatever else
     if name == True:
         print(get_char_type())
         os.system('cls' if os.name == 'nt' else 'clear')
-    print(f'Welcome {name} the {char_type}! Now before we partake on this perilous journey, I must know what sort of warrior you are!')
+    print(f'Welcome {name}! Now before we partake on this perilous journey, I must know what sort of warrior you are!')
     print(get_char_type())
     print(f'So you are {name} the {char_type} then?')
     
 class Fight:
+    
+    
     def enemy_turn():
-        enemy_skills = [enemy.attack(), enemy.potion()] # other skills]
-        
-        atk_chance = random.randint(10)
+        enemy_skills = [enemy.attack(), enemy.potion()] # other skills too
+    atk_chance = random.randint(10)
         if atk_chance <= 6:
             enemy.attack()
             print(random.choice(enemy_skills))
