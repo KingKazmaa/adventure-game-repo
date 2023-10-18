@@ -133,3 +133,36 @@ class Fight:
         if atk_chance <= 6:
             enemy.attack()
             print(random.choice(enemy_skills))
+            
+            
+# inventory + checker
+            
+player_inventory = {
+'potion': 2,
+'mana potion': 2
+}
+
+def check_inventory(player_inventory):
+    for key, value in player_inventory.items():
+        if value >= 1:
+            # use item
+            player_inventory['potion'] -=1
+            print(player_inventory['potion'])
+        else:
+            print(f'no more left')
+            
+            
+# health + mana checker
+
+def check_health():
+    if Character.health <= 0:
+        print(game_over())
+        
+        # make a 'cost' dataclass for Character and change the value with each available move. should look like this:
+        
+# cost = 
+# check_mana()
+
+def check_mana():
+    if Character.mana < cost:
+        print(f'Not enough mana! \nYou have {Character.mana}mp.')
