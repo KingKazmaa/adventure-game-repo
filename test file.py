@@ -5,12 +5,13 @@ import random
 
 class Character:
     name: str
-    health: int
     weapon: str
+    health: int
     mana: int
+    cost: int
+    dodge_chance: int
     weapon_damage: int
     base_damage: 5
-    dodge_chance: int
     xp: 0
     
     def walk():
