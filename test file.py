@@ -167,3 +167,4 @@ def check_health():
 def check_mana():
     if Character.mana < cost:
         print(f'Not enough mana! \nYou have {Character.mana}mp.')
+# maybe a function that takes you back to the fight menu/txt
