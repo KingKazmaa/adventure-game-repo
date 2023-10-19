@@ -2,22 +2,43 @@ import os
 from dataclasses import dataclass
 import random
 
-    # create character object that  holds  attributes and types
+# create character object that  holds  attributes and types
 class Character:
     name: str
-    health: int
     weapon: str
+    health: int
+    max_health: int
     mana: int
+    cost: int
+    max_mana: int
     weapon_damage: int
-    base_damage: 5
     dodge_chance: int
+    base_damage: 5
     xp: 0
-    
+    player_inventory = {
+'potion': 2,
+'mana potion': 2
+}
+
+    def check_inventory(player_inventory):
+        for key, value in player_inventory.items():
+            if value >= 1:
+                player_inventory[f'{key}'] -=1
+            else:
+                print(f'no more {key} left')
+    def check_mana():
+        if Character.mana < cost:
+            print(f'Not enough mana! \nYou have {Character.mana}mp.')
     def walk():
         print(f'Onward to glory!!!!')
+        #next prompt
     def attack():
-        # enemy.health -= 5
+        enemy.health -= 5
         print(f'{Character.name} attacks using bare hands! it isn\'t very effective')
+    def potion():
+        if Character.health >= Character.max_health:
+            Character.health = Character.max_health 
+        Character.health += 20
     def gain_xp():
         xp += 50
         print(f'You have gained +50xp! \nCurrent xp: {xp}')
@@ -31,7 +52,7 @@ class Enemy:
     weapon = f'dagger'
     weapon_damage = 20
     xp_gain = int
-    
+
     def attack():
         print(f'The enemy attacks! It does 20 damage')
         Character.health -= 25
@@ -46,11 +67,12 @@ class Enemy:
         Character.gain_xp()
 class Mage(Character):
     health = 125
+    max_health = 125
     mana = 150
     dodge_chance = .10
     weapon = f'Magic Staff'
     weapon_damage = 15
-    
+
     def fireball():
         if Mage.mana <= 44:
             print(f'You don\'t have enough mana to cast this!')
@@ -60,6 +82,8 @@ class Mage(Character):
             print(f'{Mage.name} casts Fireball!!')
             print(f'It does 30 damage!')
     def heal():
+        cost = 60
+        Mage.check_mana()
         Mage.health = 125 if Mage.health >= 125 else Mage.health + 25
         print(f'You healed 25hp! Current hp is {Mage.health}')
     def arise():
@@ -69,10 +93,11 @@ class Mage(Character):
             Mage.mana = 150 * 0.5
 class Barbarian(Character):
     health = 180
+    max_health = 180
     mana = 75
     weapon = f'Double Axe'
     weapon_damage = 35
-    
+
     def double_strike():
         double_chance = random.randint(10)
         if double_chance <= 7:
@@ -86,17 +111,25 @@ class Barbarian(Character):
             enemy.health -= Barbarian.weapon_damage + 5
 class Archer(Character):
     health = 105
+    max_health = 105
     mana = 100
     weapon = f'Hunting Bow'
     daggers = 30
     weapon_damage = 20
     dodge_chance = .15
+
     def crit_attack():
-        enemy.health -= weapon_damage * 1.6
+        enemy.health -= Archer.weapon_damage * 1.6
     def throw_dagger():
         pass
     def triple_shot():
         pass
+
+# character = Character()
+# mage = Mage()
+# barbarian = Barbarian()
+# archer = Archer()
+# enemy = Enemy()
 
 def intro_text():
     with open('intro.txt', 'w') as file:
@@ -109,20 +142,11 @@ def get_char_type():
     char_type = input()
     match char_type:
         case "barbarian":
-            char_type = Barbarian()
+            char_type = Barbarian(Character)
         case "archer":
-            char_type = Archer()
+            char_type = Archer(Character)
         case "mage":
-            char_type = Mage()
-
-character = Character()
-mage = Mage()
-barbarian = Barbarian()
-archer = Archer()
-enemy = Enemy()
-
-
-
+            char_type = Mage(Character)
 
 class Main:
     print(intro_text())
@@ -139,8 +163,7 @@ class Main:
     print(f'So you are {name} the {char_type} then?')
     
 class Fight:
-    
-    
+
     def enemy_turn():
         enemy_skills = [enemy.attack(), enemy.potion()] # other skills too
         atk_chance = random.randint(10)
